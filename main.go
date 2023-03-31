@@ -77,6 +77,17 @@ func (g *Game) evaluate() bool {
 		}
 	}
 
+	if activePlayerCount <= 1 {
+		activePlayer := -1
+		for i, p := range g.players {
+			if len(p.result) > 0 {
+				activePlayer = i
+				break
+			}
+		}
+		fmt.Printf("Game berakhir karena hanya pemain #%d yang memiliki dadu.", activePlayer+1)
+	}
+
 	return activePlayerCount <= 1
 }
 
